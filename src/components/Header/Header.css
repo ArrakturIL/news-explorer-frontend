@@ -1,6 +1,13 @@
 .header {
-  width: 100%;
-  box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0 16px;
+  position: relative;
+  z-index: 2;
+  border-bottom: #ffffff33 1px solid;
 }
 
 .header > a {
@@ -8,105 +15,20 @@
   color: inherit;
 }
 
-.header__light {
-  box-shadow: 0px -1px 0px 0px rgba(209, 210, 214, 1) inset;
+.header_dark {
+  background-color: #1a1b22;
 }
 
-.header__content {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 104px;
-  padding-top: 30px;
-}
-
-.header__logo {
-  font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-}
-
-.header__logo_light {
-  color: rgba(26, 27, 34, 1);
-}
-
-.header__logo_dark {
-  color: rgba(255, 255, 255, 1);
-}
-
-.header__menu {
-  display: none;
-}
-
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 650px) {
   .header {
     height: 66px;
-  }
-
-  .header__content {
-   margin: 0 40px;
-   padding-top: 22px;
+    padding: 0 40px;
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (min-width: 999px) {
   .header {
-    height: 56px;
-    align-items: center;
-  }
-
-  .overlay {
-   height: 100%;
-   width: 100%;
-   position: fixed;
-   background-color: rgba(0, 0, 0, 0.5);
-   /* z-index: 5;
-   left: 0;
-   top: 0;
-   overflow-x: hidden; */
-   display: none;
-  }
-  .overlay__visible {
-   display: block;
-  }
-
-  .header__content {
-    position: relative;
-    flex-direction: column;
-    align-items: start;
-    margin: 0;
-    padding: 0px 16px;
-  }
-
-  .header__content_light {
-    color: #fff;
-  }
-  .header__content_dark {
-    color: #1a1b22;
-  }
-  .header__logo {
-    margin-top: 16px;
-  }
-  .header__menu {
-    display: block;
-    height: 24px;
-    width: 24px;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 16px;  
-    right: 16px;
-    z-index: 99;
-  }
-  .header__menu_light {
-    background-color: transparent;
-    background-image: url(../../images/icons/hamburger-white.svg);
-    background-repeat: no-repeat;
-  }
-  .header__menu_dark {
-    background-color: transparent;
-    background-image: url(../../images/icons/hamburger-black.svg);
-    background-repeat: no-repeat;
+    height: 80px;
+    padding: 0 104px;
   }
 }
-  

@@ -1,0 +1,35 @@
+.not-found__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  min-height: 374px;
+  background-color: #f5f6f7;
+}
+
+.not-found__icon {
+  margin: 40px 0 86px;
+  width: 74px;
+  height: 74px;
+}
+
+.not-found__title {
+  font-family: 'Roboto-slab', sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 16px;
+}
+
+.not-found__text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #b6bcbf;
+  margin-bottom: 80px;
+  min-width: 253px;
+  text-align: center;
+}

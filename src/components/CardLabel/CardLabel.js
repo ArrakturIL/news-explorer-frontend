@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
 import './CardLabel.css';
-import bookmarkGrey from '../../images/icons/bookmark-icon.svg';
-import bookmarkBlack from '../../images/icons/bookmark-hover-icon.svg';
-import bookmarkBlue from '../../images/icons/bookmark-marked-icon.svg';
+
+import { useLocation } from 'react-router';
+import React, { useState } from 'react';
+
+import bookmarkGrey from '../../images/icons/bookmarkGrey.svg';
+import bookmarkBlack from '../../images/icons/bookmarkBlack.svg';
+import bookmarkBlue from '../../images/icons/bookmarkBlue.svg';
 import trashButton from '../../images/icons/trash-icon.svg';
 import trashButtonActive from '../../images/icons/trash-active-icon.svg';
 
 import { useInfo } from '../../context/UserContext';
-import { useLocation } from 'react-router';
+import {usePopups, popupActions} from '../../context/PopupContext';
 
 function CardLable(props) {
   const { text = 'Placeholder', isSaved } = props;
 
   const savedNews = useLocation().pathname === '/saved-articles';
 
+  const [, popupDispatch] = usePopups();
   const [trashIcon, setTrashIcon] = useState(trashButton);
   const [bookmarkIcon, setBookmarkIcon] = useState(bookmarkGrey);
   const { currentUser } = useInfo();
 
   const handleBookmarkCick = () => {
-    if (currentUser.isLoggedIn && !isSaved) setBookmarkIcon(bookmarkBlue);
-    else setBookmarkIcon(bookmarkGrey);
+    if (!currentUser.isLoggedIn) popupDispatch(popupActions.openSingUpPopup);
   };
 
   return (
@@ -37,7 +40,7 @@ function CardLable(props) {
             onMouseLeave={() => !isSaved && setBookmarkIcon(bookmarkGrey)}
             type='button'
           >
-            <img className='label__icon' src={bookmarkIcon} alt='bookmark' />
+            <img className='label__icon' src={isSaved ? bookmarkBlue : bookmarkIcon} alt='bookmark' />
           </button>
         </div>
       )}

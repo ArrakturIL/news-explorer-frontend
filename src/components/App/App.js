@@ -1,23 +1,32 @@
-import logo from '../../logo.svg';
 import './App.css';
 
+import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
+import NewsCardList from '../NewsCardList/NewsCardList';
+
+import { usePopups, popupActions } from '../../contexts/PopupContext';
+
+import { useEffect } from 'react';
+import { Route, Routes } from 'react-router';
+
 function App() {
+  const [, popupDispatch] = usePopups();
+
+  useEffect(() => {
+    const closeByEsc = (e) => {
+      e.key === 'Escape' && popupDispatch(popupActions.closeAll);
+    };
+    document.addEventListener('keydown', closeByEsc);
+    return () => document.removeEventListener('keydown', closeByEsc);
+  }, [popupDispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/saved-articles' element={<NewsCardList />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }

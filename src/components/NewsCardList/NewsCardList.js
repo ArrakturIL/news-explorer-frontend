@@ -2,10 +2,11 @@ import './NewsCardList.css';
 import NewsCard from '../NewsCard/NewsCard';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import NewsCardSection from '../NewsCardSection/NewsCardSection';
+import Header from '../Header/Header';
 import { useEffect, useState } from 'react';
 import { cards } from '../../utils/tempCardsData';
 
-function NewsCardList() {
+function NewsCardList({isLoggedin, onLogIn, onLogOut}) {
   const [showCards, setShowCards] = useState([]);
 
   useEffect(() => {
@@ -17,6 +18,11 @@ function NewsCardList() {
 
   return (
     <>
+    <Header 
+        isLoggedin={isLoggedin}
+        onLogIn={onLogIn}
+        onLogOut={onLogOut}
+    />
       <SavedNewsHeader />
       <NewsCardSection>
         <ul classNAme='news-section__container'>{showCards}</ul>
