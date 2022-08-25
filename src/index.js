@@ -4,6 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from '../src/components/App/App';
 import reportWebVitals from './reportWebVitals';
+import { PopupProvider } from './contexts/PopupContext';
+import { UserProvider } from './contexts/UserContext';
+import { initialPopupState, popupReducer } from './reducers/popupReducer';
 const container = document.getElementById('root');
 const root = ReactDOMClient.createRoot(container);
 
@@ -11,7 +14,14 @@ const root = ReactDOMClient.createRoot(container);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <App tab="home" />
+      <UserProvider>
+        <PopupProvider
+          initialPopupState={initialPopupState}
+          reducer={popupReducer}
+        >
+          <App tab='home' />
+        </PopupProvider>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

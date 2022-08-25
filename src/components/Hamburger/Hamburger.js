@@ -17,7 +17,7 @@ const Hamburger = () => {
   }`;
 
   const displayButton = () =>
-    popupState.isUserMenuOpen ? 'closeBtnClassName' : 'burgerClassName';
+    popupState.isUserMenuOpen ? closeBtnClassName : burgerClassName;
 
   const handleBurgerClick = () => {
     popupDispatch(popupActions.openUserMenu);

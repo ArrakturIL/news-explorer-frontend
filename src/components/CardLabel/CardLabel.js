@@ -9,8 +9,8 @@ import bookmarkBlue from '../../images/icons/bookmarkBlue.svg';
 import trashButton from '../../images/icons/trash-icon.svg';
 import trashButtonActive from '../../images/icons/trash-active-icon.svg';
 
-import { useInfo } from '../../context/UserContext';
-import {usePopups, popupActions} from '../../context/PopupContext';
+import { useInfo } from '../../contexts/UserContext';
+import {usePopups, popupActions} from '../../contexts/PopupContext';
 
 function CardLable(props) {
   const { text = 'Placeholder', isSaved } = props;
@@ -23,7 +23,7 @@ function CardLable(props) {
   const { currentUser } = useInfo();
 
   const handleBookmarkCick = () => {
-    if (!currentUser.isLoggedIn) popupDispatch(popupActions.openSingUpPopup);
+    if (!currentUser.isLoggedIn) popupDispatch(popupActions.openSignUpPopup);
   };
 
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 // import Navigation from '../Navigation/Navigation';
 import './Footer.css';
 import githubLogo from '../../images/icons/github.svg';
-import inLogo from '../../images/icons/linkedin.svg';
+import inLogo from '../../images/icons/linkedIn.svg';
 
 function Footer() {
   return (

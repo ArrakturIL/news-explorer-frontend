@@ -3,6 +3,8 @@ import NewsCard from '../NewsCard/NewsCard';
 import Preloader from '../Preloader/Preloader';
 import NewsCardSection from '../NewsCardSection/NewsCardSection';
 
+import { useEffect, useState } from 'react';
+
 const SearchResults = ({ isSearching, searchResults }) => {
   const [displaySets, setDisplaySets] = useState(0);
   const [displayCards, setDisplayCards] = useState([]);

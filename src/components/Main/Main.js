@@ -61,7 +61,7 @@ const Main = () => {
 
   return (
     <>
-      {popupState.isSigninPopupOpen && (
+      {popupState.isSigninPopupOpen &&  (
         <PopupWithForm
           isOpen={popupState.isSigninPopupOpen}
           onSubmit={handleSignIn}
@@ -109,7 +109,7 @@ const Main = () => {
       {nothingFound && <NotFound />}
       <SearchResults isSearching={isSearching} results={searchResults} />
       <About />
-    </>
+  </>
   );
 };
 

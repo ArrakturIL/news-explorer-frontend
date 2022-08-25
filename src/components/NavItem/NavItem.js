@@ -2,7 +2,7 @@ import './NavItem.css';
 
 import { NavLink, useLocation } from 'react-router-dom';
 
-import { usePopups, popupActions } from '../../contexts/PopupsContext';
+import { usePopups, popupActions } from '../../contexts/PopupContext';
 
 const NavItem = ({
   path = '/',
@@ -33,7 +33,7 @@ const NavItem = ({
       <NavLink
         style={{ minWidth: minWidth, ...userMenuStyle }}
         className={({ isActive }) =>
-          isActive ? activeClassName : navbar__link
+          isActive ? activeClassName : 'navbar__link'
         }
         to={path}
       >

@@ -1,7 +1,7 @@
 import './SignOutButton.css';
 import logOutIcon from '../../images/icons/logout-dark.svg';
 import logOutIconWhite from '../../images/icons/logout-light.svg';
-import { usePopups, popupActions } from '../../contexts/PopupsContext';
+import { usePopups, popupActions } from '../../contexts/PopupContext';
 import { useInfo } from '../../contexts/UserContext';
 import { useLocation } from 'react-router-dom';
 

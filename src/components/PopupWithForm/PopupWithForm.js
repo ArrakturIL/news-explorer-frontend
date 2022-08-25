@@ -31,7 +31,7 @@ const PopupWithForm = (props) => {
       className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}
     >
       <div className='popup__container'>
-        <button className='popup__close-button' onClick={onClose}></button>
+        <button className='popup__close-button' onClick={handleClick}></button>
         <h3 className='popup__title'>{title}</h3>
         {!hideForm && cloneElement(children, props)}
         <div
