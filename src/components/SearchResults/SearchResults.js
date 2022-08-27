@@ -5,7 +5,7 @@ import NewsCardSection from '../NewsCardSection/NewsCardSection';
 
 import { useEffect, useState } from 'react';
 
-const SearchResults = ({ isSearching, searchResults }) => {
+const SearchResults = ({ isSearching, results }) => {
   const [displaySets, setDisplaySets] = useState(0);
   const [displayCards, setDisplayCards] = useState([]);
 
@@ -18,7 +18,7 @@ const SearchResults = ({ isSearching, searchResults }) => {
   };
 
   const handleShowmoreClick = () => {
-    const nextThree = getDisplayCards(searchResults, displaySets + 1);
+    const nextThree = getDisplayCards(results, displaySets + 1);
     setDisplaySets(displaySets + 1);
     setDisplayCards(nextThree);
   };
@@ -26,12 +26,11 @@ const SearchResults = ({ isSearching, searchResults }) => {
   useEffect(() => {
     setDisplaySets(0);
     setDisplayCards([]);
-    if (searchResults?.length !== 0) {
-      const newCards = getDisplayCards(searchResults);
-      setDisplayCards(newCards);
+    if (results?.length !== 0) {
+      setDisplayCards(results);
       setDisplaySets(1);
     }
-  }, [searchResults]);
+  }, [results]);
 
   return (
     <>
@@ -41,7 +40,7 @@ const SearchResults = ({ isSearching, searchResults }) => {
           {displaySets !== 0 && (
             <h2 className='news-section__title'>Search results</h2>
           )}
-          <ul className='news-section__container'>{displayCards}</ul>
+          <ul className='news-section__container'>{getDisplayCards(displayCards)}</ul>
           {!isSearching && (
             <button
               type='button'

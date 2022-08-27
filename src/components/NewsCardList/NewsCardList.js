@@ -27,7 +27,7 @@ const NewsCardList = () => {
       {popupState.isUserMenuOpen && isMobileSized && <UserMenu />}
       <SavedNewsHeader />
       <NewsCardSection>
-        <ul classNAme='news-section__container'>{displayCards}</ul>
+        <ul className='news-section__container'>{displayCards}</ul>
       </NewsCardSection>
     </>
   );

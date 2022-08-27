@@ -38,20 +38,24 @@
 }
 .label__popup.label__text {
   font-size: 12px;
-  line-height: 14px;
+  line-height: 12px;
 }
 .label__text {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px 20px;
-  min-height: 40px;
+  max-height: 40px;
   border-radius: 10px;
   background-color: #fff;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 24px;
+}
+
+.label__container_right:hover .label__popup {
+  clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
 }
 
 @media screen and (max-width: 650px) {

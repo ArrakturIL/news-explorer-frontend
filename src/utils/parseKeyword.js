@@ -1,18 +1,21 @@
 
 export const parseKeyword = (keywords) => {
-  if (!Array.isArray(keywords)) {
-    return null;
-  }
-  if (keywords.length === 0) {
-    return null;
-  }
-  const keywordMap = {};
+  if (!Array.isArray(keywords)) return null;
+  if (keywords.length === 0) return null;
+  const keywordCount = {};
   keywords.forEach((keyword) => {
-    keywordMap[keyword] = keywordMap[keyword] ? keywordMap[keyword] + 1 : 1;
+    if (keywordCount[keyword]) {
+      keywordCount[keyword] += 1;
+    } else {
+      keywordCount[keyword] = 1;
+    }
   });
-  const keywordList = Object.keys(keywordMap).sort(
-    (a, b) => keywordMap[b] - keywordMap[a]
+  const sortedKeywords = Object.keys(keywordCount).sort(
+    (a, b) => keywordCount[b] - keywordCount[a]
   );
-  return keywordList.slice(0, 3);
+  const topThree = sortedKeywords.slice(0, 3);
+  const other = sortedKeywords.slice(3);
+  const keywordsString = topThree.join(', ');
+  return `${keywordsString}${other.length > 0 ? `, ${other.join(', ')}` : ''}`;
 };
 

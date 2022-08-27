@@ -10,7 +10,7 @@ import trashButton from '../../images/icons/trash-icon.svg';
 import trashButtonActive from '../../images/icons/trash-active-icon.svg';
 
 import { useInfo } from '../../contexts/UserContext';
-import {usePopups, popupActions} from '../../contexts/PopupContext';
+import { usePopups, popupActions } from '../../contexts/PopupContext';
 
 function CardLable(props) {
   const { text = 'Placeholder', isSaved } = props;
@@ -30,9 +30,11 @@ function CardLable(props) {
     <>
       {!savedNews && (
         <div className='label__container label__container_right'>
-          <div className='label__container_popup'>
-            <span className='label__popup label__text'>{text}</span>
-          </div>
+          {!currentUser.isLoggedIn && (
+            <div className='label__container_popup'>
+              <span className='label__popup label__text'>Sign in to save</span>
+            </div>
+          )}
           <button
             className='label__button'
             onClick={handleBookmarkCick}
@@ -40,7 +42,11 @@ function CardLable(props) {
             onMouseLeave={() => !isSaved && setBookmarkIcon(bookmarkGrey)}
             type='button'
           >
-            <img className='label__icon' src={isSaved ? bookmarkBlue : bookmarkIcon} alt='bookmark' />
+            <img
+              className='label__icon'
+              src={isSaved ? bookmarkBlue : bookmarkIcon}
+              alt='bookmark'
+            />
           </button>
         </div>
       )}

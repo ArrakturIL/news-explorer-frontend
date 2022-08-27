@@ -4,16 +4,17 @@
   align-items: center;
   background: none;
   border: none;
-  cursor: pointer;
+  border-radius: 80px;
   background-color: #fff;
-  max-width: 288px;
+  cursor: pointer;
+  width: 100%;
   height: 56px;
-  margin: 64px auto 56px;
   padding: 0;
+  margin: 16px auto 0;
   transition: background-color 0.3s ease-in-out;
 
   color: #1a1b22;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
@@ -24,16 +25,15 @@
   opacity: 0.9;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 650px) {
   .show-more {
     max-width: 240px;
     margin: 32px auto 16px;
   }
 }
-
-@media screen and (max-width: 650px) {
+@media screen and (min-width: 999px) {
   .show-more {
-    width: 100%;
-    margin: 16px auto 0;
+    max-width: 288px;
+    margin: 64px auto 56px;
   }
 }

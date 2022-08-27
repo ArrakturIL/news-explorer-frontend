@@ -10,7 +10,7 @@ const UserMenu = () => {
   const [, popupDispatch] = usePopups();
   const { currentUser } = useInfo();
   const isSavedNews = useLocation().pathname === '/saved-articles';
-  const routeToPath = isSavedNews ? '/' : '/save-articles';
+  const routeToPath = isSavedNews ? '/' : '/saved-articles';
   const displayPath = isSavedNews ? 'Home' : 'Save news';
 
   const handleOverlayClick = () => {
