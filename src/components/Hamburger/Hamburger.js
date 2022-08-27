@@ -20,7 +20,7 @@ const Hamburger = () => {
     popupState.isUserMenuOpen ? closeBtnClassName : burgerClassName;
 
   const handleBurgerClick = () => {
-    popupDispatch(popupActions.openUserMenu);
+    popupDispatch(popupActions.toggleUserMenu);
   };
 
   return <button onClick={handleBurgerClick} className={displayButton()} />;

@@ -12,8 +12,8 @@ const SearchResults = ({ isSearching, searchResults }) => {
   const getDisplayCards = (cardArray, count = 1, size = 3) => {
     const lastIndex = count * size - 1;
     const cardsToDisplay = cardArray.slice(0, lastIndex + 1);
-    return cardsToDisplay.map((card) => (
-      <NewsCard card={card} key={card._id} />
+    return cardsToDisplay.map((card, i) => (
+      <NewsCard key={i} {...card}></NewsCard>
     ));
   };
 
@@ -26,7 +26,7 @@ const SearchResults = ({ isSearching, searchResults }) => {
   useEffect(() => {
     setDisplaySets(0);
     setDisplayCards([]);
-    if (searchResults.length !== 0) {
+    if (searchResults?.length !== 0) {
       const newCards = getDisplayCards(searchResults);
       setDisplayCards(newCards);
       setDisplaySets(1);

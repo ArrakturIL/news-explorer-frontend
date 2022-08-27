@@ -1,21 +1,17 @@
 import './SearchForm.css';
-import { cards } from '../../utils/tempCardsData';
+import { exampleCards } from '../../utils/tempCardsData';
 
-const SearchForm = (handleSearch) => {
+const SearchForm = ({ buttonText = 'Search', handleSearch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSearch(cards);
+    handleSearch(exampleCards);
   };
 
   return (
-    <form className='search-form' onSubmit={handleSubmit}>
-      <input
-        type='search'
-        placeholder='Enter toppic'
-        className='search-form__input'
-      />
-      <button className='search-form__submit' type='submit'>
-        Search
+    <form onSubmit={handleSubmit} className="search-form">
+      <input className="search-form__input" type={'search'} placeholder="Enter topic"></input>
+      <button className="search-form__submit" type={'submit'}>
+        {buttonText}
       </button>
     </form>
   );

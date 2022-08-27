@@ -3,32 +3,34 @@ import NewsCard from '../NewsCard/NewsCard';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import NewsCardSection from '../NewsCardSection/NewsCardSection';
 import Header from '../Header/Header';
+import UserMenu from '../UserMenu/UserMenu';
+import { usePopups } from '../../contexts/PopupContext';
+import useWindowSize from '../../hooks/useWindowSize';
 import { useEffect, useState } from 'react';
-import { cards } from '../../utils/tempCardsData';
+import { savedCards } from '../../utils/tempCardsData';
 
-function NewsCardList({isLoggedin, onLogIn, onLogOut}) {
-  const [showCards, setShowCards] = useState([]);
+const NewsCardList = () => {
+  const [displayCards, setDisplayCards] = useState([]);
+  const [popupState] = usePopups();
+  const isMobileSized = useWindowSize().width < 650;
 
   useEffect(() => {
-    const newCards = cards.map((card) => {
-      return <NewsCard card={card} key={card._id} />;
-    });
-    setShowCards(newCards);
+    const newCards = savedCards.map((card, i) => (
+      <NewsCard key={i} {...card} />
+    ));
+    setDisplayCards(newCards);
   }, []);
 
   return (
     <>
-    <Header 
-        isLoggedin={isLoggedin}
-        onLogIn={onLogIn}
-        onLogOut={onLogOut}
-    />
+      <Header />
+      {popupState.isUserMenuOpen && isMobileSized && <UserMenu />}
       <SavedNewsHeader />
       <NewsCardSection>
-        <ul classNAme='news-section__container'>{showCards}</ul>
+        <ul classNAme='news-section__container'>{displayCards}</ul>
       </NewsCardSection>
     </>
   );
-}
+};
 
 export default NewsCardList;

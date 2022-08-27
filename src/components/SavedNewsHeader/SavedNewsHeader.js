@@ -1,6 +1,6 @@
 import './SavedNewsHeader.css';
 import { useEffect, useState } from 'react';
-import { cards, tempKeywords } from '../../utils/tempCardsData';
+import { exampleCards, exampleKeywords } from '../../utils/tempCardsData';
 import { parseKeyword } from '../../utils/parseKeyword';
 import { useInfo } from '../../contexts/UserContext';
 
@@ -10,9 +10,9 @@ const SavedNewsHeader = () => {
   const [keywords, setkeywords] = useState('');
 
   useEffect(() => {
-    const keywordsSting = parseKeyword(tempKeywords);
+    const keywordsSting = parseKeyword(exampleKeywords);
     setkeywords(keywordsSting);
-    setSavedNews(cards);
+    setSavedNews(exampleCards);
   }, []);
 
   return (

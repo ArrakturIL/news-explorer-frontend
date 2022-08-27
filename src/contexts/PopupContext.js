@@ -18,8 +18,8 @@ export const popupActions = {
 
 export const usePopups = () => useContext(PopupContext);
 
-export const PopupProvider = ({ children, initialState, reducer }) => {
-  const [popupState, popupDispatch] = useReducer(reducer, initialState);
+export const PopupProvider = ({ children, initialPopupState, reducer }) => {
+  const [popupState, popupDispatch] = useReducer(reducer, initialPopupState);
 
   return (
     <PopupContext.Provider value={[popupState, popupDispatch]}>
