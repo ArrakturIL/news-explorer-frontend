@@ -80,7 +80,7 @@ import './Header.css';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { usePopups } from '../../contexts/PopupContext';
-import useWindowSize from '../../hooks/useWindowSize';
+import UseWindowSize from '../../hooks/UseWindowSize';
 
 import Logo from '../Logo/Logo';
 import Navbar from '../Navbar/Navbar';
@@ -88,7 +88,7 @@ import Navbar from '../Navbar/Navbar';
 const Header = () => {
   const [popupState] = usePopups();
   const [headerClassName, setHeaderClassName] = useState('header');
-  const isMobileSized = useWindowSize().width < 650;
+  const isMobileSized = UseWindowSize().width < 650;
   const isSavedNews = useLocation().pathname === '/saved-articles';
 
   useEffect(() => {

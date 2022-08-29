@@ -1,0 +1,31 @@
+.hamburger {
+  all: unset;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+}
+
+.close-btn {
+  all: unset;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+}
+
+.close-btn_dark {
+  background-image: url('../../images/icons/close-icon.svg');
+}
+
+.hamburger_dark {
+  background-image: url('../../images/icons/hamburger-black.svg');
+}
+
+.close-btn_light {
+  background-image: url('../../images/icons/close-icon.svg');
+}
+
+.hamburger_light {
+  background-image: url('../../images/icons/hamburger-white.svg');
+}
