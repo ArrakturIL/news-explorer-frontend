@@ -1,5 +1,5 @@
 import './SignOutButton.css';
-import logOutIcon from '../../images/icons/logout-dark.svg';
+import logOutIcon from '../../images/icons/logout.svg';
 import logOutIconWhite from '../../images/icons/logout-light.svg';
 import { usePopups, popupActions } from '../../contexts/PopupContext';
 import { useInfo } from '../../contexts/UserContext';
@@ -19,7 +19,7 @@ const SignOutButton = ({ inUserMenu }) => {
   }`;
   const buttonClassName = `navbar__sign-out-button ${
     isSavedNews && !popupState.isUserMenuOpen
-      ? ' navbar__sign-out-button_in_type_saved-news'
+      ? ' navbar__sign-out-button_type_saved-news'
       : ''
   }`;
 
@@ -30,18 +30,16 @@ const SignOutButton = ({ inUserMenu }) => {
 
   return (
     <li onClick={handleClick} className={wrapperClassName}>
-      <button className={buttonClassName}>
-        {userName}
-        <img
-          className='navbar__sign-out-icon'
-          alt='logout'
-          src={
-            isSavedNews && popupState.isUserMenuOpen
-              ? logOutIcon
-              : logOutIconWhite
-          }
-        />
-      </button>
+      <button className={buttonClassName}>{userName}</button>
+      <img
+        className='navbar__sign-out-icon'
+        alt='logout'
+        src={
+          isSavedNews && !popupState.isUserMenuOpen
+            ? logOutIcon
+            : logOutIconWhite
+        }
+      />
     </li>
   );
 };

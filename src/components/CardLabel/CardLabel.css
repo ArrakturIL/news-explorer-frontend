@@ -4,19 +4,19 @@
   justify-content: center;
   align-items: center;
 }
-.label__container_right {
+.label__container-right {
   gap: 5px;
   right: 8px;
   top: 8px;
 }
-.label__container_left {
+.label__container-left {
   left: 8px;
   top: 8px;
 }
 .label__icon {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 24px;
+  width: 24px;
 }
 .label__button {
   border: none;
@@ -37,8 +37,8 @@
   transition: clip-path 0.3s ease-in-out;
 }
 .label__popup.label__text {
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 14px;
+  line-height: 14px;
 }
 .label__text {
   display: flex;
@@ -51,19 +51,19 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
-  line-height: 24px;
+  line-height: 14px;
 }
 
-.label__container_right:hover .label__popup {
+.label__container-right:hover .label__popup {
   clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
 }
 
 @media screen and (max-width: 650px) {
-  .label__container_right {
+  .label__container-right {
     top: 8px;
     right: 8px;
   }
-  .label__container_left {
+  .label__container-left {
     top: 8px;
     left: 8px;
   }

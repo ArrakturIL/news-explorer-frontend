@@ -29,10 +29,10 @@ function CardLable(props) {
   return (
     <>
       {!savedNews && (
-        <div className='label__container label__container_right'>
+        <div className='label__container label__container-right'>
           {!currentUser.isLoggedIn && (
-            <div className='label__container_popup'>
-              <span className='label__popup label__text'>Sign in to save</span>
+            <div className='label__container-popup'>
+              <p className='label__popup label__text'>Sign in to save</p>
             </div>
           )}
           <button
@@ -51,9 +51,9 @@ function CardLable(props) {
         </div>
       )}
       {savedNews && (
-        <div className='label__container label__container_right'>
-          <div className='label__container_popup'>
-            <span className='label__popup label__text'>Remove from saved</span>
+        <div className='label__container label__container-right'>
+          <div className='label__container-popup'>
+            <p className='label__popup label__text'>Remove from saved</p>
           </div>
           <button
             className='label__button'
@@ -66,8 +66,8 @@ function CardLable(props) {
         </div>
       )}
       {savedNews && (
-        <div className='label__container label__container_left'>
-          <span className='label__text'>{text}</span>
+        <div className='label__container label__container-left'>
+          <p className='label__text'>{text}</p>
         </div>
       )}
     </>

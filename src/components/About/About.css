@@ -7,7 +7,7 @@
 
 .about__img {
   width: 100%;
-  max-width: 350px;
+  max-width: 464px;
   display: block;
   margin: auto;
   border-radius: 50%;
@@ -17,6 +17,8 @@
 .about__text-container {
   display: flex;
   flex-direction: column;
+  min-width: 288px;
+  width: 100%;
 }
 
 .about__title {
@@ -39,12 +41,12 @@
   margin-bottom: 0;
 }
 
-@media screen and (min-width: 450px) {
+/* @media screen and (min-width: 450px) {
   
   .about__text-container {
     max-width: 75%;
   }
-}
+} */
 
 @media screen and (min-width: 650px) {
   .about {
@@ -62,8 +64,5 @@
 @media screen and (min-width: 999px) {
   .about {
     padding: 80px 104px 80px 104px;
-  }
-  .about__text {
-    max-width: 600px;
   }
 }

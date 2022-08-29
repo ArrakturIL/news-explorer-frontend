@@ -73,7 +73,6 @@
 }
 
 .news-card__ref {
-  width: fit-content;
   font-family: Roboto-slab, sans-serif;
   text-transform: uppercase;
   color: #b6bcbf;
@@ -82,10 +81,11 @@
   line-height: 20px;
   letter-spacing: 0.4px;
   padding: 0 16px 16px;
-  white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   max-width: 100%;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 650px) {

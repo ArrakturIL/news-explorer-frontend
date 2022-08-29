@@ -12,15 +12,8 @@ function Footer() {
           <li className='footer__page-link hover-fade'>
             <Link to={'/'}>Home</Link>
           </li>
-          <li>
-            <a
-              className='footer__page-link hover-fade'
-              href='/'
-              target={'_blank'}
-              rel='noreferrer'
-            >
-              Home
-            </a>
+          <li className='footer__page-link hover-fade'>
+            <Link to={'http://practicum.com'}> Practicum by Yandex </Link>
           </li>
         </ul>
         <ul className='footer__social-links'>
@@ -41,7 +34,7 @@ function Footer() {
           <li>
             <a
               className='footer__social-link hover-fade'
-              href='www.linkedin.com/in/sergey-gushchin-2bb25a21a'
+              href='http://linkedin.com/in/arrakturil'
               target={'_blank'}
               rel='noreferrer'
             >

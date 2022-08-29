@@ -3,7 +3,7 @@ import {usePopups, popupActions} from '../../contexts/PopupContext';
 
 const SignInButton = ({inUserMenu}) => {
     const [, popupDispatch] = usePopups();
-    const wrapperClassName = `navbar__sign-in-wrapper${inUserMenu ? ' navbar__sign-in-wrapper_in_type_menu' : ''}`;
+    const wrapperClassName = `navbar__sign-in-wrapper${inUserMenu ? ' navbar__sign-in-wrapper_type_menu' : ''}`;
 
     const handleClick = () => {
         popupDispatch(popupActions.openSignInPopup);

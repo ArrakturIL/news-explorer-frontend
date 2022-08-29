@@ -15,12 +15,17 @@ const NavItem = ({
   const [popupState, popupDispatch] = usePopups();
   const isSavedNews = useLocation().pathname === '/saved-articles';
   const navItemClassName = `navbar__text ${
-    isSavedNews ? 'navbar__text_dark' : ''
+    isSavedNews ? 'navbar__text-dark' : ''
   }`;
   const userMenuStyle = {
-    color: isSavedNews && popupState.isUsermenuOpen ? 'white' : '',
+    color:
+      isSavedNews && popupState.isUserMenuOpen
+        ? 'white'
+        : !popupState.isUserMenuOpen
+        ? 'black'
+        : '',
   };
-  const activeClassName = `navbar__link navbar__link_${
+  const activeClassName = `navbar__link navbar__link-${
     isSavedNews ? 'dark' : 'light'
   }`;
 
