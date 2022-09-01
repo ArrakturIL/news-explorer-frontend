@@ -7,13 +7,13 @@ const Hamburger = () => {
   const isSavedNews = useLocation().pathname === '/saved-articles';
   const burgerClassName = `hamburger ${
     isSavedNews && !popupState.isUserMenuOpen
-      ? 'hamburger__dark'
-      : 'hamburger__light'
+      ? 'hamburger_type_dark'
+      : 'hamburger_type_light'
   }`;
   const closeBtnClassName = `close-btn ${
     isSavedNews && !popupState.isUserMenuOpen
-      ? 'close-btn__dark'
-      : 'close-btn__light'
+      ? 'close-btn_type_dark'
+      : 'close-btn_type_light'
   }`;
 
   const displayButton = () =>

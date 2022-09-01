@@ -5,7 +5,7 @@ import { usePopups, popupActions } from '../../contexts/PopupContext';
 const PopupWithForm = (props) => {
   const {
     hideForm,
-    name,
+    formName,
     title,
     children,
     isOpen,
@@ -18,7 +18,7 @@ const PopupWithForm = (props) => {
   const handleClick = (e) => {
     const classList = e.target.classList;
     const isCloseEvent =
-      classList.contains(`popup_type_${name}`) ||
+      classList.contains(`popup_type_${formName}`) ||
       classList.contains('popup__close-button');
     if (isCloseEvent) {
       popupDispatch(popupActions.closeAll);
@@ -28,7 +28,7 @@ const PopupWithForm = (props) => {
   return (
     <div
       onMouseDown={handleClick}
-      className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}
+      className={`popup popup_type_${formName} ${isOpen ? 'popup_opened' : ''}`}
     >
       <div className='popup__container'>
         <button className='popup__close-button' onClick={handleClick}></button>
@@ -38,7 +38,7 @@ const PopupWithForm = (props) => {
           className='form__redirect-wrapper'
           style={{ display: hideForm ? 'block' : 'flex' }}
         >
-          {!hideForm && <span>or</span>}
+          {!hideForm && <p>or</p>}
           <nav>
             <button
               className='form__redirect-button hover-fade'

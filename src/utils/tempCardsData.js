@@ -138,6 +138,7 @@ export const exampleKeywords = [
   'Yellowstone',
   'Nature',
   'Nature',
+  'Tech',
 ];
 
 export const savedCards = [

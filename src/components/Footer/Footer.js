@@ -47,9 +47,9 @@ function Footer() {
           </li>
         </ul>
       </nav>
-      <span className='footer__copyright'>
+      <p className='footer__copyright'>
         &copy; {new Date().getFullYear()} News Explorer, Powered by News API
-      </span>
+      </p>
     </footer>
   );
 }

@@ -30,7 +30,7 @@ const SignOutButton = ({ inUserMenu }) => {
 
   return (
     <li onClick={handleClick} className={wrapperClassName}>
-      <button className={buttonClassName}>{userName}</button>
+      <button className={buttonClassName}>{userName || 'John Doe'}</button>
       <img
         className='navbar__sign-out-icon'
         alt='logout'

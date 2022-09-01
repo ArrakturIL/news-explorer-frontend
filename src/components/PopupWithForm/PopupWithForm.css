@@ -12,7 +12,7 @@
   height: 40px;
   position: absolute;
   top: -46px;
-  right: -46px;
+  right: -35px;
   border-style: hidden;
   transition: opacity 0.4s;
   cursor: pointer;
@@ -45,6 +45,7 @@
 .popup_opened {
   visibility: visible;
   opacity: 1;
+  padding-top: 50px;
 }
 
 .popup__container {
@@ -57,6 +58,8 @@
   color: #1a1b22;
   position: relative;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
 }
 .popup__title {
   padding: 0;
@@ -85,12 +88,19 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 450px) {
+
+@media screen and (max-width: 550px) {
   .popup__close-button {
     top: -46px;
     right: 0;
   }
   .popup__title {
     margin-bottom: 18px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .popup__container {
+    height: 100%;
   }
 }

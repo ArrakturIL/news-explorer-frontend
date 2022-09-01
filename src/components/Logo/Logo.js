@@ -5,7 +5,7 @@ import { usePopups, popupActions } from '../../contexts/PopupContext';
 const Logo = () => {
   const [popupState, popupDispatch] = usePopups();
   const isSavedNews = useLocation().pathname === '/saved-articles';
-  const logoClassName = `logo-text logo-text__${
+  const logoClassName = `logo-text logo-text_type_${
     isSavedNews && !popupState.isUserMenuOpen ? 'dark' : 'light'
   }`;
 

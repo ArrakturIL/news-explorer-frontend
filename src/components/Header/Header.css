@@ -15,8 +15,15 @@
   color: inherit;
 }
 
-.header__dark {
+.header_type_dark {
   background-color: #1a1b22;
+}
+
+@media screen and (max-width: 425px) {
+  .header__hidden {
+    visibility: hidden;
+    background-color: black;
+  }
 }
 
 @media screen and (min-width: 650px) {

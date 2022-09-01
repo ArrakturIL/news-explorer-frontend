@@ -16,12 +16,24 @@ const Header = () => {
   useEffect(() => {
     if (isMobileSized) {
       setHeaderClassName(
-        `header ${popupState.isUserMenuOpen ? 'header__dark' : ''}`
+        `header ${
+          popupState.isUserMenuOpen
+            ? 'header_type_dark'
+            : popupState.isSigninPopupOpen || popupState.isSignupPopupOpen
+            ? 'header__hidden'
+            : ''
+        }`
       );
     } else {
       setHeaderClassName('header');
     }
-  }, [popupState.isUserMenuOpen, isMobileSized, isSavedNews]);
+  }, [
+    popupState.isUserMenuOpen,
+    popupState.isSigninPopupOpen,
+    popupState.isSignupPopupOpen,
+    isMobileSized,
+    isSavedNews,
+  ]);
 
   return (
     <header className={headerClassName}>

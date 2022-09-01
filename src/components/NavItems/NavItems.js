@@ -10,7 +10,7 @@ const NavItems = () => {
   const isSavedNews = useLocation().pathname === '/saved-articles';
 
   return (
-    <nav className={`navbar ${isSavedNews ? 'navbar_dark' : ''}`}>
+    <nav className={`navbar ${isSavedNews ? 'navbar_type_dark' : ''}`}>
       <ul className='navbar__list'>
         <NavItem text={'Home'} path={'/'} minWidth='64px' />
         <NavItem

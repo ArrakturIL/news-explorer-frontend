@@ -1,4 +1,3 @@
-
 export const parseKeyword = (keywords) => {
   if (!Array.isArray(keywords)) return null;
   if (keywords.length === 0) return null;
@@ -14,8 +13,8 @@ export const parseKeyword = (keywords) => {
     (a, b) => keywordCount[b] - keywordCount[a]
   );
   const topThree = sortedKeywords.slice(0, 3);
-  const other = sortedKeywords.slice(3);
+  // const other = sortedKeywords.slice(0, 3);
   const keywordsString = topThree.join(', ');
-  return `${keywordsString}${other.length > 0 ? `, ${other.join(', ')}` : ''}`;
+  // return `${keywordsString}${other.length > 0 ? `, ${other.join(', ')}` : ''}`;
+  return keywordsString;
 };
-

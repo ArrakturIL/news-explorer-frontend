@@ -21,8 +21,8 @@ const NavItem = ({
     color:
       isSavedNews && popupState.isUserMenuOpen
         ? 'white'
-        : !popupState.isUserMenuOpen
-        ? 'black'
+        : isSavedNews && !popupState.isUserMenuOpen
+        ? '#1a1b22'
         : '',
   };
   const activeClassName = `navbar__link navbar__link-${

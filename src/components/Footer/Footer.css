@@ -22,6 +22,7 @@
   grid-template-rows: 1fr 1fr;
   gap: 26px;
   place-items: center;
+  max-width: 72px;
 }
 
 .footer__social-link-image {
@@ -61,7 +62,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 470px) {
+@media screen and (min-width: 650px) {
   .footer__social-links {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
@@ -78,7 +79,7 @@
   }
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 800px) {
   .footer {
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -103,6 +104,7 @@
 
   .footer__social-links {
     gap: 18px;
+    
   }
 }
 

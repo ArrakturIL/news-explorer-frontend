@@ -22,7 +22,7 @@
 
 @media screen and (min-width: 650px) {
   .news-section {
-    /* padding: 40px 40px 0; */
+    padding: 40px 40px;
     margin: 0 auto;
   }
   .news-section__container {
@@ -34,9 +34,9 @@
 }
 
 @media screen and (min-width: 999px) {
-  /* .news-section {
-    padding: 80px 104px 0;
-  } */
+  .news-section {
+    padding: 80px 104px 24px;
+  }
   .news-section__container {
     gap: 16px;
   }

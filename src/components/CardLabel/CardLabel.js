@@ -13,17 +13,25 @@ import { useInfo } from '../../contexts/UserContext';
 import { usePopups, popupActions } from '../../contexts/PopupContext';
 
 function CardLable(props) {
-  const { text = 'Placeholder', isSaved } = props;
+  const { text = 'Placeholder' } = props;
 
   const savedNews = useLocation().pathname === '/saved-articles';
 
   const [, popupDispatch] = usePopups();
   const [trashIcon, setTrashIcon] = useState(trashButton);
   const [bookmarkIcon, setBookmarkIcon] = useState(bookmarkGrey);
+  const [isSaved, setIsSaved] = useState(false);
   const { currentUser } = useInfo();
 
   const handleBookmarkCick = () => {
-    if (!currentUser.isLoggedIn) popupDispatch(popupActions.openSignUpPopup);
+    if (!currentUser.isLoggedIn) {
+      popupDispatch(popupActions.openSignUpPopup);
+    } else if (currentUser.isLoggedIn) {
+      setIsSaved(true);
+    }
+    if (currentUser.isLoggedIn && isSaved) {
+      setIsSaved(false);
+    }
   };
 
   return (

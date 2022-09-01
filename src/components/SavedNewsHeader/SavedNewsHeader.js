@@ -16,13 +16,13 @@ const SavedNewsHeader = () => {
   }, []);
 
   return (
-    <section className='saved-news__header'>
-      <h2 className='saved-news__header-title'>Saved News</h2>
-      <p className='saved-news__count'>
+    <section className='saved-news-header'>
+      <h2 className='saved-news-header__title'>Saved News</h2>
+      <p className='saved-news-header__count'>
         {currentUser.name || 'John Doe'} you have {savedNews.length} saved news
       </p>
-      <p className='saved-news__keywords'>By keywords:</p>
-      <p className='saved-news__keywords saved-news__keywords-list'>
+      <p className='saved-news-header__keywords'>By keywords:</p>
+      <p className='saved-news-header__keywords saved-news-header__keywords-list'>
         {keywords}
       </p>
     </section>

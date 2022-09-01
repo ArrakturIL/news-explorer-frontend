@@ -14,18 +14,18 @@
   background-size: contain;
 }
 
-.close-btn__dark {
+.close-btn_type_dark {
   background-image: url('../../images/icons/close-icon.svg');
 }
 
-.hamburger__dark {
+.hamburger_type_dark {
   background-image: url('../../images/icons/hamburger-black.svg');
 }
 
-.close-btn__light {
+.close-btn_type_light {
   background-image: url('../../images/icons/close-icon.svg');
 }
 
-.hamburger__light {
+.hamburger_type_light {
   background-image: url('../../images/icons/hamburger-white.svg');
 }

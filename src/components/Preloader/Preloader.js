@@ -1,9 +1,9 @@
 import './Preloader.css';
-const Preloader = ({text}) => {
+const Preloader = ({ text }) => {
   return (
     <section className='preloader'>
       <div className='preloader__circle'></div>
-      <span className='preloader__text'>{text}</span>
+      <p className='preloader__text'>{text}</p>
     </section>
   );
 };
