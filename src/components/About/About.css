@@ -68,10 +68,5 @@
   }
   .about__img {
     max-width: 464px;
-    max-height: 464px;
-  }
-  .about__title {
-    font-size: 40px;
-    line-height: 46px;
   }
 }
