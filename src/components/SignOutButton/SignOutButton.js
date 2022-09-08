@@ -25,6 +25,7 @@ const SignOutButton = ({ inUserMenu }) => {
 
   const handleClick = () => {
     signOut();
+    localStorage.removeItem('jwt');
     popupDispatch(popupActions.closeUserMenu);
   };
 

@@ -4,22 +4,31 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import NewsCardSection from '../NewsCardSection/NewsCardSection';
 import Header from '../Header/Header';
 import UserMenu from '../UserMenu/UserMenu';
-import { usePopups } from '../../contexts/PopupContext';
+
 import UseWindowSize from '../../hooks/UseWindowSize';
-import { useEffect, useState } from 'react';
-import { savedCards } from '../../utils/tempCardsData';
+
+import { mainApi } from '../../utils/MainApi';
+import { usePopups } from '../../contexts/PopupContext';
+import { useEffect } from 'react';
+import { useInfo } from '../../contexts/UserContext';
+import { MAX_MOBILE_SIZE } from '../../utils/constants';
 
 const NewsCardList = () => {
-  const [displayCards, setDisplayCards] = useState([]);
+  // const [displayCards, setDisplayCards] = useState([]);
   const [popupState] = usePopups();
-  const isMobileSized = UseWindowSize().width < 650;
+  const isMobileSized = UseWindowSize().width < MAX_MOBILE_SIZE;
+  const { savedCards, setSavedCardsState } = useInfo();
 
   useEffect(() => {
-    const newCards = savedCards.map((card, i) => (
-      <NewsCard key={i} {...card} />
-    ));
-    setDisplayCards(newCards);
-  }, []);
+    mainApi
+      .getSavedArticles()
+      .then((cards) => {
+        setSavedCardsState(cards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [setSavedCardsState]);
 
   return (
     <>
@@ -27,7 +36,11 @@ const NewsCardList = () => {
       {popupState.isUserMenuOpen && isMobileSized && <UserMenu />}
       <SavedNewsHeader />
       <NewsCardSection>
-        <ul className='news-section__container'>{displayCards}</ul>
+        <ul className='news-section__container'>
+          {savedCards.map((card) => (
+            <NewsCard key={card.id} {...card} />
+          ))}
+        </ul>
       </NewsCardSection>
     </>
   );

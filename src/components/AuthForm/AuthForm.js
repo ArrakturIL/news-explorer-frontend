@@ -8,11 +8,10 @@ const AuthForm = ({
   withNameField,
   responseError,
 }) => {
-  const { inputs, errors, isValid, handleInputChange } =
-    useInputsAndValidation();
+  const { inputs, errors, isValid, handleInputChange } = useInputsAndValidation();
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit();
+    onSubmit(inputs);
   };
 
   return (

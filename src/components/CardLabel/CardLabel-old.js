@@ -10,15 +10,29 @@ import trashButton from '../../images/icons/trash-icon.svg';
 import trashButtonActive from '../../images/icons/trash-active-icon.svg';
 
 import { useInfo } from '../../contexts/UserContext';
+import { usePopups, popupActions } from '../../contexts/PopupContext';
 
 function CardLable(props) {
-  const { isDeleted, text, isSaved, saveId, onBookmark, onTrashClick } = props;
+  const { text = 'Placeholder' } = props;
 
   const savedNews = useLocation().pathname === '/saved-articles';
 
+  const [, popupDispatch] = usePopups();
   const [trashIcon, setTrashIcon] = useState(trashButton);
   const [bookmarkIcon, setBookmarkIcon] = useState(bookmarkGrey);
+  const [isSaved, setIsSaved] = useState(false);
   const { currentUser } = useInfo();
+
+  const handleBookmarkCick = () => {
+    if (!currentUser.isLoggedIn) {
+      popupDispatch(popupActions.openSignUpPopup);
+    } else if (currentUser.isLoggedIn) {
+      setIsSaved(true);
+    }
+    if (currentUser.isLoggedIn && isSaved) {
+      setIsSaved(false);
+    }
+  };
 
   return (
     <>
@@ -31,17 +45,15 @@ function CardLable(props) {
           )}
           <button
             className='label__button'
-            onClick={onBookmark}
+            onClick={handleBookmarkCick}
             onMouseEnter={() => !isSaved && setBookmarkIcon(bookmarkBlack)}
             onMouseLeave={() => !isSaved && setBookmarkIcon(bookmarkGrey)}
             type='button'
           >
             <img
               className='label__icon'
-              src={
-                !isDeleted && (saveId || isSaved) ? bookmarkBlue : bookmarkIcon
-              }
-              alt={'Bookmark icon'}
+              src={isSaved ? bookmarkBlue : bookmarkIcon}
+              alt='bookmark'
             />
           </button>
         </div>
@@ -53,12 +65,11 @@ function CardLable(props) {
           </div>
           <button
             className='label__button'
-            onClick={onTrashClick}
             onMouseEnter={() => setTrashIcon(trashButtonActive)}
             onMouseLeave={() => setTrashIcon(trashButton)}
             type='button'
           >
-            <img className='label__icon' src={trashIcon} alt={'Trash icon'} />
+            <img className='label__icon' src={trashIcon} alt='trash' />
           </button>
         </div>
       )}
