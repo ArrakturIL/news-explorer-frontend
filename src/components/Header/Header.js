@@ -2,7 +2,7 @@ import './Header.css';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { usePopups } from '../../contexts/PopupContext';
-import {MAX_MOBILE_SIZE} from '../../utils/constants';
+import { MAX_MOBILE_SIZE } from '../../utils/constants';
 import UseWindowSize from '../../hooks/UseWindowSize';
 
 import Logo from '../Logo/Logo';
