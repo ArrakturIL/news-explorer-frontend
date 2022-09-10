@@ -31,8 +31,9 @@ function App() {
     auth
       .authorize(email, password)
       .then((user) => {
+        localStorage.setItem('jwt', user.token);
+        mainApi.updateToken(user.token);
         signIn(user.name);
-        localStorage.setItem('jwt', JSON.stringify(user.token));
         popupDispatch(popupActions.closeSignInPopup);
         mainApi.getSavedArticles().then((cards) => {
           setSavedCardsState(cards);
@@ -44,9 +45,9 @@ function App() {
       });
   };
 
-  const handleSignUp = ({ email, password, name }) => {
+  const handleSignUp = ({ email, password, username }) => {
     auth
-      .register(email, password, name)
+      .register(email, password, username)
       .then(() => {
         popupDispatch(popupActions.closeSignUpPopup);
         popupDispatch(popupActions.openSuccessPopup);
@@ -67,10 +68,11 @@ function App() {
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      auth.getContent(jwt);
-      mainApi
-        .getUserInfo()
+      auth
+        .getContent(jwt)
         .then((user) => {
+          mainApi.getUserInfo();
+
           signIn(user.name);
         })
         .catch((err) => {

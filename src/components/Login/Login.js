@@ -7,7 +7,7 @@ const Login = ({ handleSignIn, showSignUp, responseError }) => {
 
   return (
     <PopupWithForm
-      isOpen={popupState.isSignipPopupOpen}
+      isOpen={popupState.isSigninPopupOpen}
       onSubmit={handleSignIn}
       isValid={true}
       formName='signin'

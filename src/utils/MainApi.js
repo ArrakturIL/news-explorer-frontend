@@ -11,7 +11,7 @@ class MainApi {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this._token}`,
       },
-      body: data && JSON.stringify(data),
+      body: JSON.stringify(data),
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -45,6 +45,10 @@ class MainApi {
 
   deleteArticle = (articleId) =>
     this._fetch('DELETE', `/articles/${articleId}`);
+
+    updateToken = (token) => {
+      this._token = `Bearer ${token}`;
+    }
 }
 
 const BASE_URL =
@@ -52,7 +56,7 @@ const BASE_URL =
     ? 'https://api.arraktur-news-explorer.students.nomoredomainssbs.ru'
     : 'http://localhost:3000';
 
-const jwt = localStorage.getItem('jwt');
+const jwt = `Bearer ${localStorage.getItem('jwt')}`;
 
 export const mainApi = new MainApi({
   baseUrl: BASE_URL,
