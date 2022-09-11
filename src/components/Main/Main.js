@@ -90,7 +90,7 @@ const Main = ({
       {popupState.isSuccessPopupOpen && <Success showSignIn={showSignIn} />}
       <section className='main'>
         <Header />
-        {popupDispatch.isUserMenuOpen && isMobileSized && <UserMenu />}
+        {popupState.isUserMenuOpen && isMobileSized && <UserMenu />}
         <PageTitle />
         <SearchForm
           handleSearchSubmit={handleSearchSubmit}

@@ -9,7 +9,7 @@ class MainApi {
       method: method,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this._token}`,
+        Authorization: this._token,
       },
       body: JSON.stringify(data),
     }).then((res) => {
@@ -46,9 +46,9 @@ class MainApi {
   deleteArticle = (articleId) =>
     this._fetch('DELETE', `/articles/${articleId}`);
 
-    updateToken = (token) => {
-      this._token = `Bearer ${token}`;
-    }
+  updateToken = (token) => {
+    this._token = token;
+  };
 }
 
 const BASE_URL =
@@ -62,5 +62,3 @@ export const mainApi = new MainApi({
   baseUrl: BASE_URL,
   token: jwt,
 });
-
-

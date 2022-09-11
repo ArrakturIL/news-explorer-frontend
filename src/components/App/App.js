@@ -71,6 +71,7 @@ function App() {
       auth
         .getContent(jwt)
         .then((user) => {
+          
           mainApi.getUserInfo();
 
           signIn(user.name);
