@@ -6,35 +6,38 @@ const BASE_URL =
 const handleResponse = (res) =>
   res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 
-const register = (email, password, name) => {
-  return fetch(`${BASE_URL}/signup`, {
+const register = async (email, password, name) => {
+  const res = await fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email, password, name }),
-  }).then(handleResponse);
+  });
+  return handleResponse(res);
 };
 
-const authorize = (email, password) => {
-  return fetch(`${BASE_URL}/signin`, {
+const authorize = async (email, password) => {
+  const res = await fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email, password }),
-  }).then(handleResponse);
+  });
+  return handleResponse(res);
 };
 
-const getContent = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
+const getContent = async (token) => {
+  const res = await fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-  }).then(handleResponse);
+  });
+  return handleResponse(res);
 };
 
 export { register, authorize, getContent };

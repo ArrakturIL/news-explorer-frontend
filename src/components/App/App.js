@@ -21,7 +21,7 @@ import {
 
 function App() {
   const [, popupDispatch] = usePopups();
-  const { currentUser, setSavedCardsState, signIn } = useInfo();
+  const { currentUser, /*setSavedCardsState,*/ signIn } = useInfo();
   const [responseError, setResponseError] = useState(null);
 
   const navigate = useNavigate();
@@ -35,9 +35,9 @@ function App() {
         mainApi.updateToken(user.token);
         signIn(user.name);
         popupDispatch(popupActions.closeSignInPopup);
-        mainApi.getSavedArticles().then((cards) => {
-          setSavedCardsState(cards);
-        });
+        // mainApi.getSavedArticles().then((cards) => {
+        //   setSavedCardsState(cards);
+        // });
       })
       .catch((err) => {
         console.log(err);
@@ -65,30 +65,23 @@ function App() {
     }
   }, [currentUser.isLoggedIn, location.pathname, navigate, popupDispatch]);
 
-  useEffect(() => {
+ useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth
         .getContent(jwt)
         .then((user) => {
-          
-          mainApi.getUserInfo();
-
           signIn(user.name);
+          mainApi.updateToken(jwt);
+          // mainApi.getSavedArticles().then((cards) => {
+          //   setSavedCardsState(cards);
+          // });
         })
         .catch((err) => {
-          console.log(err.message);
-        });
-      mainApi
-        .getSavedArticles()
-        .then((cards) => {
-          setSavedCardsState(cards);
-        })
-        .catch((err) => {
-          console.log(err.message);
+          console.log(err);
         });
     }
-  }, [signIn, setSavedCardsState]);
+  }, []);
 
   useEffect(() => {
     const closeByEsc = (e) => {

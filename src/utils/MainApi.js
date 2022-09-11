@@ -4,21 +4,20 @@ class MainApi {
     this._token = token;
   }
 
-  _fetch = (method, baseUrl, data) => {
-    return fetch(`${this._baseUrl}${baseUrl}`, {
+  _fetch = async (method, baseUrl, data) => {
+    const res = await fetch(`${this._baseUrl}${baseUrl}`, {
       method: method,
       headers: {
         'Content-Type': 'application/json',
         Authorization: this._token,
       },
       body: JSON.stringify(data),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Error: ${res.status}`);
-      }
     });
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`Error: ${res.status}`);
+    }
   };
 
   _convertCardFormat = (cards) => {
@@ -47,7 +46,7 @@ class MainApi {
     this._fetch('DELETE', `/articles/${articleId}`);
 
   updateToken = (token) => {
-    this._token = token;
+    this._token = `Bearer ${token}`;
   };
 }
 
