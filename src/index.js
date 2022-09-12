@@ -12,7 +12,7 @@ const root = ReactDOMClient.createRoot(container);
 
 // Initial render: Render an element to the root.
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
         <PopupProvider
@@ -23,7 +23,7 @@ root.render(
         </PopupProvider>
       </UserProvider>
     </BrowserRouter>
-  // </React.StrictMode>
+ </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

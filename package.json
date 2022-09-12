@@ -1,5 +1,5 @@
 {
-  "name": "newa-explorer-frontend",
+  "name": "news-explorer-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "deploy": "npm run build && scp -r ./build/* Arrakturil@20.14.94.121:~/news-explorer-front"
   },
   "eslintConfig": {
     "extends": [

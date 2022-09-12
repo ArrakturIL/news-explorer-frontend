@@ -14,12 +14,10 @@ const SearchResults = ({ isSearching, results, keyword }) => {
 
   const getDisplayCards = useCallback(
     (cardArray, count = 1, size = 3) => {
-     
       const lastIndex = count * size - 1;
       const cardsToDisplay = cardArray.slice(0, lastIndex + 1).map((card) => {
-        const saved = savedCards.find(
-          (saved) => saved.url === card.url
-        );
+        const saved = savedCards.find((saved) => saved.url === card.url);
+
         const id = saved?.id;
         return {
           ...card,

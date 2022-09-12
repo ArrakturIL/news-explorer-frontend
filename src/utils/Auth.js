@@ -1,7 +1,10 @@
+// const BASE_URL =
+// process.env.NODE_ENV === 'production'
+// ? 'https://api.arraktur-news-explorer.students.nomoredomainssbs.ru'
+// : 'http://localhost:3000';
+
 const BASE_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://api.arraktur-news-explorer.students.nomoredomainssbs.ru'
-    : 'http://localhost:3000';
+  'https://api.arraktur-news-explorer.students.nomoredomainssbs.ru';
 
 const handleResponse = (res) =>
   res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
