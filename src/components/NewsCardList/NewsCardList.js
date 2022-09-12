@@ -14,7 +14,6 @@ import { useInfo } from '../../contexts/UserContext';
 import { MAX_MOBILE_SIZE } from '../../utils/constants';
 
 const NewsCardList = () => {
-  // const [displayCards, setDisplayCards] = useState([]);
   const [popupState] = usePopups();
   const isMobileSized = UseWindowSize().width < MAX_MOBILE_SIZE;
   const { savedCards, setSavedCardsState } = useInfo();
@@ -28,7 +27,7 @@ const NewsCardList = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [setSavedCardsState]);
+  }, []);
 
   return (
     <>
@@ -38,7 +37,7 @@ const NewsCardList = () => {
       <NewsCardSection>
         <ul className='news-section__container'>
           {savedCards.map((card) => (
-            <NewsCard key={card.id} {...card} />
+            <NewsCard key={card.id + card.publishedAt} {...card} />
           ))}
         </ul>
       </NewsCardSection>

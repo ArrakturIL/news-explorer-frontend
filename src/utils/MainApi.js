@@ -9,7 +9,7 @@ class MainApi {
       method: method,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: this._token,
+        authorization: this._token,
       },
       body: JSON.stringify(data),
     });

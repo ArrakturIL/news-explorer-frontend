@@ -1,7 +1,6 @@
 import './Main.css';
 
 import { useState, useEffect } from 'react';
-// import { useInfo } from '../../contexts/UserContext';
 import { usePopups, popupActions } from '../../contexts/PopupContext';
 import { MAX_MOBILE_SIZE } from '../../utils/constants';
 import UseWindowSize from '../../hooks/UseWindowSize';
@@ -12,8 +11,6 @@ import PageTitle from '../PageTitle/PageTitle';
 import SearchForm from '../SearchForm/SearchForm';
 import SearchResults from '../SearchResults/SearchResults';
 import About from '../About/About';
-// import PopupWithForm from '../PopupWithForm/PopupWithForm';
-// import AuthForm from '../AuthForm/AuthForm';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import ConnectioError from '../ConnectionError/ConnectionError';
@@ -27,7 +24,6 @@ const Main = ({
   setResponseError,
 }) => {
   const isMobileSized = UseWindowSize().width < MAX_MOBILE_SIZE;
-  // const { signIn } = useInfo();
   const [popupState, popupDispatch] = usePopups();
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -93,7 +89,7 @@ const Main = ({
         {popupState.isUserMenuOpen && isMobileSized && <UserMenu />}
         <PageTitle />
         <SearchForm
-          handleSearchSubmit={handleSearchSubmit}
+          handleSearch={handleSearchSubmit}
           setIsSearching={setIsSearching}
           connectionError={setConnectionError}
         />

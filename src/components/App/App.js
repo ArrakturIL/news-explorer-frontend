@@ -11,17 +11,11 @@ import { mainApi } from '../../utils/MainApi';
 import * as auth from '../../utils/Auth';
 
 import { useEffect, useState } from 'react';
-import {
-  Route,
-  Routes,
-  // Navigate,
-  useNavigate,
-  useLocation,
-} from 'react-router';
+import { Route, Routes, useNavigate, useLocation } from 'react-router';
 
 function App() {
   const [, popupDispatch] = usePopups();
-  const { currentUser, /*setSavedCardsState,*/ signIn } = useInfo();
+  const { currentUser, setSavedCardsState, signIn } = useInfo();
   const [responseError, setResponseError] = useState(null);
 
   const navigate = useNavigate();
@@ -35,9 +29,6 @@ function App() {
         mainApi.updateToken(user.token);
         signIn(user.name);
         popupDispatch(popupActions.closeSignInPopup);
-        // mainApi.getSavedArticles().then((cards) => {
-        //   setSavedCardsState(cards);
-        // });
       })
       .catch((err) => {
         console.log(err);
@@ -65,21 +56,20 @@ function App() {
     }
   }, [currentUser.isLoggedIn, location.pathname, navigate, popupDispatch]);
 
- useEffect(() => {
+  useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth
         .getContent(jwt)
         .then((user) => {
           signIn(user.name);
-          mainApi.updateToken(jwt);
-          // mainApi.getSavedArticles().then((cards) => {
-          //   setSavedCardsState(cards);
-          // });
         })
         .catch((err) => {
           console.log(err);
         });
+      mainApi.getSavedArticles().then((cards) => {
+        setSavedCardsState(cards);
+      });
     }
   }, []);
 

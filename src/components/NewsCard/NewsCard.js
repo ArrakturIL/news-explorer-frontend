@@ -5,10 +5,10 @@ import { useState } from 'react';
 import { useInfo } from '../../contexts/UserContext';
 import { popupActions, usePopups } from '../../contexts/PopupContext';
 
-const NewsCard = ({ removeBooknark, ...card }) => {
+const NewsCard = ({ removeBookmark, ...card }) => {
   const { keyword, isSaved, title } = card;
 
-  const name = card?.sourse?.name;
+  const name = card?.source?.name;
   const searchId = card?.id;
   const urlToImage = card?.urlToImage;
   const description = card?.description;
@@ -47,7 +47,7 @@ const NewsCard = ({ removeBooknark, ...card }) => {
           title,
         })
         .then((card) => {
-          setSaveId(card.id);
+          setSaveId(card._id);
           setIsDeleted(false);
         })
         .catch((err) => console.log(err));
@@ -58,6 +58,7 @@ const NewsCard = ({ removeBooknark, ...card }) => {
     mainApi
       .deleteArticle(searchId || saveId)
       .then(() => {
+        console.log(savedCards);
         setSavedCardsState(
           savedCards.filter((card) => card.id !== searchId || saveId)
         );
@@ -78,7 +79,7 @@ const NewsCard = ({ removeBooknark, ...card }) => {
         <div className='news-card__image-container'>
           <CardLabel
             onTrashClick={handleTrashClick}
-            onBookmarkClick={handleBookmarkClick}
+            onBookmark={handleBookmarkClick}
             text={keyword}
             isSaved={isSaved}
             isDeleted={isDeleted}

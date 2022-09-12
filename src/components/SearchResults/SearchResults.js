@@ -14,10 +14,11 @@ const SearchResults = ({ isSearching, results, keyword }) => {
 
   const getDisplayCards = useCallback(
     (cardArray, count = 1, size = 3) => {
+     
       const lastIndex = count * size - 1;
       const cardsToDisplay = cardArray.slice(0, lastIndex + 1).map((card) => {
         const saved = savedCards.find(
-          (savedCard) => savedCard.url === card.url
+          (saved) => saved.url === card.url
         );
         const id = saved?.id;
         return {
@@ -49,7 +50,7 @@ const SearchResults = ({ isSearching, results, keyword }) => {
   return (
     <>
       {isSearching && <Preloader text='Searching for news...' />}
-      {!isSearching && displaySets === 0 && (
+      {!isSearching && displaySets !== 0 && (
         <NewsCardSection>
           {displaySets !== 0 && (
             <h2 className='news-section__title'>Search results</h2>
@@ -57,7 +58,7 @@ const SearchResults = ({ isSearching, results, keyword }) => {
           <ul className='news-section__container'>
             {displayCards.map((card) => (
               <NewsCard
-                key={card?.source?.name || card.id + card.publishedAt}
+                key={card.id + card.publishedAt}
                 keyword={keyword}
                 {...card}
               />
