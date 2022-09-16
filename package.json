@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "npx eslint .",
-    "deploy": "npm run build && scp -r ./build/* Arrakturil@20.14.94.121:~/news-explorer-front"
+    "deploy": "npm run build && scp -r ./build/* Arrakturil@20.14.94.121:/home/Arrakturil/news-explorer-front"
   },
   "eslintConfig": {
     "extends": [
