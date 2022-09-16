@@ -25,12 +25,13 @@ const SignOutButton = ({ inUserMenu }) => {
 
   const handleClick = () => {
     signOut();
+    localStorage.removeItem('jwt');
     popupDispatch(popupActions.closeUserMenu);
   };
 
   return (
     <li onClick={handleClick} className={wrapperClassName}>
-      <button className={buttonClassName}>{userName || 'John Doe'}</button>
+      <button className={buttonClassName}>{userName}</button>
       <img
         className='navbar__sign-out-icon'
         alt='logout'

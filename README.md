@@ -1,3 +1,7 @@
+[App backend](api.arraktur-news-explorer.students.nomoredomainssbs.ru).
+
+[NewsExplorer(online)](arraktur-news-explorer.students.nomoredomainssbs.ru)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

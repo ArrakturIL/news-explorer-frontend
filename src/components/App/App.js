@@ -3,14 +3,75 @@ import './App.css';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import NewsCardList from '../NewsCardList/NewsCardList';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import { usePopups, popupActions } from '../../contexts/PopupContext';
+import { useInfo } from '../../contexts/UserContext';
+import { mainApi } from '../../utils/MainApi';
+import * as auth from '../../utils/Auth';
 
-import { useEffect } from 'react';
-import { Route, Routes } from 'react-router';
+import { useEffect, useState } from 'react';
+import { Route, Routes, useNavigate, useLocation } from 'react-router';
 
 function App() {
   const [, popupDispatch] = usePopups();
+  const { currentUser, setSavedCardsState, signIn } = useInfo();
+  const [responseError, setResponseError] = useState(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleSignIn = ({ email, password }) => {
+    auth
+      .authorize(email, password)
+      .then((user) => {
+        localStorage.setItem('jwt', user.token);
+        mainApi.updateToken(user.token);
+        signIn(user.name);
+        popupDispatch(popupActions.closeSignInPopup);
+      })
+      .catch((err) => {
+        console.log(err);
+        setResponseError(err.message);
+      });
+  };
+
+  const handleSignUp = ({ email, password, username }) => {
+    auth
+      .register(email, password, username)
+      .then(() => {
+        popupDispatch(popupActions.closeSignUpPopup);
+        popupDispatch(popupActions.openSuccessPopup);
+      })
+      .catch((err) => {
+        console.log(err);
+        setResponseError(err.message);
+      });
+  };
+
+  useEffect(() => {
+    if (!currentUser.isLoggedIn && location.pathname === '/saved-articles') {
+      navigate('/');
+      popupDispatch(popupActions.openSignUpPopup);
+    }
+  }, [currentUser.isLoggedIn, location.pathname, navigate, popupDispatch]);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth
+        .getContent(jwt)
+        .then((user) => {
+          signIn(user.name);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      mainApi.getSavedArticles().then((cards) => {
+        setSavedCardsState(cards);
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const closeByEsc = (e) => {
@@ -23,8 +84,28 @@ function App() {
   return (
     <div className='app'>
       <Routes>
-        <Route path='/' element={<Main />} />
-        <Route path='/saved-articles' element={<NewsCardList />} />
+        <Route
+          path='/'
+          element={
+            <Main
+              responseError={responseError}
+              setResponseError={setResponseError}
+              handleSignUp={handleSignUp}
+              handleSignIn={handleSignIn}
+            />
+          }
+        />
+        <Route
+          path='/saved-articles'
+          element={
+            <ProtectedRoute
+              isLoggedIn={currentUser.isLoggedIn}
+              redirectPath='/'
+            >
+              <NewsCardList />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
     </div>
