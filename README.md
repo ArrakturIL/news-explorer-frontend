@@ -1,4 +1,5 @@
 [App backend](api.arraktur-news-explorer.students.nomoredomainssbs.ru).
+
 [NewsExplorer(online)](arraktur-news-explorer.students.nomoredomainssbs.ru)
 
 # Getting Started with Create React App
